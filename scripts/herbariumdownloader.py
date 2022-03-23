@@ -13,11 +13,12 @@ parser.add_argument('--input', help='path to the input CSV file')
 parser.add_argument('--output', help='path to a directory to write a CSV file with the sampled records and downloaded images to', default='')
 parser.add_argument('--samples', help='set number of randomly picked rows from the CSV file', type=int, default=10)
 parser.add_argument('--df', help='downsampling factor to be applied to images prior to writing to disk', type=float, default=1.0)
+parser.add_argument('--Q', help='set the JPEG quality parameter for processed images', type=int, default=50)
 args = parser.parse_args()
 
 
 # TODO: Add check for validity of args.input string
-sheet=pd.read_csv(args.input, low_memory=False) # Read CSV file
+sheet=pd.read_csv(PurePath(args.input), low_memory=False) # Read CSV file
 
 
 # Pick randomly some rows out of the dataframe
@@ -32,6 +33,7 @@ for url in subsheet["1,111-collectionobjectattachments.collectionobject.collecti
     print("Download " + url)
     try:
         # TODO: Make a urllib.request based downloader instead of assuming wget is installed in the OS
+        # TODO: Set the download path to be identical to the output path
         retval = subprocess.run(["wget " + str(url)], shell=True, check=True)
         #print(retval)
         
@@ -39,10 +41,13 @@ for url in subsheet["1,111-collectionobjectattachments.collectionobject.collecti
         imgfilename = PurePath(urlparse(url).path).name
         img = imread(imgfilename)
         
-        imgrescaled = rescale(img, args.df, order=1, multichannel=True, anti_aliasing= True)
+        # Downsample by a factor of args.df using nearest neighbor interpolation and anti aliasing by Gaussian filtering prior to sampling
+        imgrescaled = img_as_ubyte(rescale(img, args.df, order=0, multichannel=True, anti_aliasing=True))
         
         # TODO Set output file name to NHMD catalogue number
-        imsave(PurePath(args.output, 'samples.jpg').as_posix(), img_as_ubyte(imgrescaled), quality=50)
+        imsave(PurePath(args.output, 'samples.jpg').as_posix(), imgrescaled, quality=args.Q)
+        
+        # TODO: Delete the original downloaded file
         
         
     except subprocess.CalledProcessError as e:
