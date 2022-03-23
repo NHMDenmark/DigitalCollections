@@ -17,6 +17,10 @@ parser.add_argument('--Q', help='set the JPEG quality parameter for processed im
 args = parser.parse_args()
 
 
+# EXAMPLE:
+# python herbariumdownloader.py --input /Users/kimstp/Documents/NHMD/data/Herbarium/query_results_23032022.csv --samples 10 --df 0.5 --output /Users/kimstp/Dropbox/NHMD/Herbarium/Natalie
+
+
 # TODO: Add check for validity of args.input string
 sheet=pd.read_csv(PurePath(args.input), low_memory=False) # Read CSV file
 
@@ -30,6 +34,7 @@ subsheet.to_csv(PurePath(args.output, 'samples.csv'), index=False)
 
 # Walk through sampled records and download images, downsample and save to disk
 for index, record in subsheet.iterrows():
+    # TODO: Handle that some records may have multiple attachments separated by ';'
     url = record["1,111-collectionobjectattachments.collectionobject.collectionObjectAttachments"]
     catnum = record["1.collectionobject.catalogNumber"]
     print("Catalogue number NHMD-" + str(catnum))
