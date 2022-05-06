@@ -37,10 +37,10 @@ if args["codeformat"] == 'qr':
     # pyzbar is developed by NHM London, https://github.com/NaturalHistoryMuseum/pyzbar
 
     height,width = img_gray.shape[:2]
-    barcodes = pyzbar.decode((img_gray.tobytes(), width, height), symbols=[ZBarSymbol.QRCODE])
+    qrcodes = pyzbar.decode((img_gray.tobytes(), width, height), symbols=[ZBarSymbol.QRCODE])
 
     print("QR codes:\n")
-    print(barcodes)
+    print(qrcodes)
 
 elif args["codeformat"] == 'dmtx':
     # Find Data Matrix codes in the image and decode
