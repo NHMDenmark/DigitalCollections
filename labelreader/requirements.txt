@@ -3,3 +3,4 @@ pytesseract
 pyzbar
 pylibdmtx
 pandas
+pytest
