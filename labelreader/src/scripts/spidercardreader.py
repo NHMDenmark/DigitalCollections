@@ -31,7 +31,8 @@ ocrreader = tesseract.OCR(args["tesseract"], args["language"])
 ocrreader.read_image(args["image"])
 
 ocrtext = ocrreader.get_text()
-print(ocrtext)
+for i in range(len(ocrtext)):
+    print(ocrtext[i])
 
 ocrreader.visualize_boxes()
 
