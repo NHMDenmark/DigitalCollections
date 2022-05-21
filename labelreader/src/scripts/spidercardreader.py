@@ -5,7 +5,7 @@ import cv2
 import pandas as pd
 
 from pathlib import Path
-#print(str(Path(__file__).parent.parent))
+print("Adding to syspath: " + str(Path(__file__).parent.parent))
 sys.path.append(str(Path(__file__).parent.parent))
 
 from ocr import tesseract
@@ -17,7 +17,7 @@ ap.add_argument("-t", "--tesseract", required=True,
     help="path to tesseract executable")
 ap.add_argument("-i", "--image", required=True,
 	help="file name for and path to input image")
-ap.add_argument("-l", "--language", required=False, default="eng",
+ap.add_argument("-l", "--language", required=False, default="dan+eng",
     help="language that tesseract uses - depends on installed tesseract language packages")
 #ap.add_argument("-c", "--codeformat", required=False, default='none', choices=['dmtx', 'qr', 'none'],
 #    help="choose between searching for QR code (qr) or Data Matrix code (dmtx). Default=none - no search.")

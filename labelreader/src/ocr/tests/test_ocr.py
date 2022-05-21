@@ -2,6 +2,7 @@ import pytest
 from pathlib import Path
 from ocr import tesseract
 import pytesseract
+import pandas as pd
 
 
 TESTDATAPATH = Path(__file__).parent
@@ -42,5 +43,13 @@ def test_ocr_tesseract_get_text():
     
     # Check the content of the first element in the first sentence
     assert ocrlist[0][0] == '001195'
+    
+    
+def test_ocr_tesseract_get_dataframe():
+    ocrreader = tesseract.OCR(TESSERACT_CMD_PATH, 'dan+eng')
+    assert ocrreader.get_dataframe() == None
+    ocrreader.read_image(str(TESTDATAPATH.joinpath('scan_lsq523_2022-05-06-15-58-40.png')))
+    
+    assert isinstance(ocrreader.get_dataframe(), pd.core.frame.DataFrame)
     
     

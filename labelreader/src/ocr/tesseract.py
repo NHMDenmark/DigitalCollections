@@ -37,7 +37,7 @@ class OCR():
             linetext = []
             # Make a sentence of read symbols for each line read in the image
             for index, row in self.ocr_result.iterrows():
-                if row['conf'] > 0 and row['width'] * row['height'] > 10: # Check confidence value and that the box has area larger than 10 pixels^2
+                if row['conf'] > 0 and row['width'] * row['height'] > 20: # Check confidence value and that the box has area larger than 10 pixels^2
                     if row['word_num'] == 1:
                         if len(linetext) != 0:
                             retlist.append(linetext)
@@ -50,6 +50,13 @@ class OCR():
                 retlist.append(linetext)
                     
         return retlist
+        
+        
+    def get_dataframe(self):
+        """Return the result from tesseract as a Pandas dataframe. 
+        Returns None if is read_image has not been called."""
+        return self.ocr_result
+
 
     def visualize_boxes(self):
         """Visualize the blocks of text detected by tesseract.
@@ -58,10 +65,15 @@ class OCR():
         """
         colors = [(0, 0, 0), # Color rectangle lines
                   (0, 0, 255),
+                  (0, 64, 255),
+                  (0, 191, 255),
                   (0, 255, 0),
                   (255, 0, 0),
+                  (255, 64, 0),
+                  (255, 191, 0),
                   (0, 255, 255),
-                  (255, 255, 0)
+                  (255, 255, 0),
+                  (255, 0, 255)
                 ]
         line_thickness = 3 # pts
 
@@ -71,11 +83,11 @@ class OCR():
             print("Warning: You must call read_image prior to calling the get_text method!")
         else:
             for index, row in self.ocr_result.iterrows():
-                if row['conf'] > 0 and row['width'] * row['height'] > 10: # Check confidence value and that the box has area larger than 10 pixels^2
+                if row['conf'] > 0 and row['width'] * row['height'] > 20: # Check confidence value and that the box has area larger than 10 pixels^2
                     top_coord = (row['left'], row['top']) # left, top
                     bottom_coord = (row['left'] + row['width'], row['top'] + row['height']) # left + width, top + height
-                    #print(str(row['block_num']))
-                    cv2.rectangle(img, top_coord, bottom_coord, colors[row['block_num']], line_thickness)
+                    colidx = row['block_num'] % len(colors) # Cyclic use of colors if we block_num is larger than the allocated colors.                        
+                    cv2.rectangle(img, top_coord, bottom_coord, colors[colidx], line_thickness)
         
         cv2.namedWindow("Boxes")
         cv2.imshow("Boxes", img)
