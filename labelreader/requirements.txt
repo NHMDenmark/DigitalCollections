@@ -1,6 +1,0 @@
-opencv-contrib-python
-pytesseract
-pyzbar
-pylibdmtx
-pandas
-pytest
