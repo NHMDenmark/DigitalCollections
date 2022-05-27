@@ -1,7 +1,7 @@
 # Labels reader
-Experimenting with automated reading of natural history labels such as Herbarium labels.
+This project aims to provide automated reading of natural history labels such as Herbarium labels.
 
-Python scripts and ideas for automated reading of machine typed labels (not yet handwritten labels) and Data Matric codes or QR codes.
+Python scripts and ideas for automated reading of machine typed labels (not yet handwritten labels) and Data Matrix codes or QR codes.
 
 ## Requirements
 The following must be installed on the system. On MacOS I install via MacPorts.
