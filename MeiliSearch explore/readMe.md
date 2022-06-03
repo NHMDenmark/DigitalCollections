@@ -33,7 +33,7 @@ csvtojson input.csv > output.json
 ```  
 
 
-## Python specific for meilisearch.py  
+## Python specific for meilisearch_tryout.py  
 Please install MeiliSearch from PIP : pip3 install meilisearch  
 The json used in the code is here: https://alumni-my.sharepoint.com/personal/bxq762_ku_dk/_layouts/15/download.aspx?UniqueId=f89b67e8dc0f47eb8c6820a470360e14&e=7WeI2L  
 
