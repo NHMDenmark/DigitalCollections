@@ -2,7 +2,7 @@
 
 The purpose of this effort is to prototype a small search index solution to be used in conjunction with the SpUtil APP so that auto-suggest can be implemented. The auto-suggest feature requires very small latencies when users are typing in taxon names. Less than 20 milliseconds would be good.
 
-## installation of MeiliSearch
+## Installation of MeiliSearch
 
 I used Docker to install into my Linux laptop. Be mindful that you are downloading the latest version and change the version number accordingly.  
 
@@ -46,4 +46,5 @@ The specs for the laptop this was tested on is:
 
 For a csv file of 200K records and four columns (18 MB). The search returns a result in less than 10 milliseconds, sometimes sub 6 milliseconds.This is well within the acceptable.
 
-
+## Next step
+I need to test the setup with the full 1 million records file.
