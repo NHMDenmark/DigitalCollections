@@ -39,3 +39,11 @@ The json used in the code is here: https://alumni-my.sharepoint.com/personal/bxq
 
 There is a built in pause in the code that allows the index to be built. The json file is in this case 18MB and that takes a bit of time to turn into an index. 
 
+## Performance  
+The specs for the laptop this was tested on is:  
+- 11th Gen Intel(R) Core(TM) i5-1135G7 @ 2.40GHz  
+- 16 MB physical RAM
+
+For a csv file of 200K records and four columns (18 MB). The search returns a result in less than 10 milliseconds, sometimes sub 6 milliseconds
+
+
