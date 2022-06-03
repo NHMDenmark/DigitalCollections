@@ -44,6 +44,6 @@ The specs for the laptop this was tested on is:
 - 11th Gen Intel(R) Core(TM) i5-1135G7 @ 2.40GHz  
 - 16 MB physical RAM
 
-For a csv file of 200K records and four columns (18 MB). The search returns a result in less than 10 milliseconds, sometimes sub 6 milliseconds
+For a csv file of 200K records and four columns (18 MB). The search returns a result in less than 10 milliseconds, sometimes sub 6 milliseconds.This is well within the acceptable.
 
 
