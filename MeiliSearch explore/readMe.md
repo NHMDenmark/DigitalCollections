@@ -33,5 +33,9 @@ csvtojson input.csv > output.json
 ```  
 
 
-## Python specific  
+## Python specific for meilisearch.py  
 Please install MeiliSearch from PIP : pip3 install meilisearch  
+The json used in the code is here: https://alumni-my.sharepoint.com/personal/bxq762_ku_dk/_layouts/15/download.aspx?UniqueId=f89b67e8dc0f47eb8c6820a470360e14&e=7WeI2L  
+
+There is a built in pause in the code that allows the index to be built. The json file is in this case 18MB and that takes a bit of time to turn into an index. 
+
