@@ -4,7 +4,7 @@ The purpose of this effort is to prototype a small search index solution to be u
 
 ## installation of MeiliSearch
 
-I used Docker to install into my Linux laptop.  
+I used Docker to install into my Linux laptop. Be mindful that you are downloading the latest version and change the version number accordingly.  
 
 ``` docker pull getmeili/meilisearch:v0.27.1```  
 
@@ -16,21 +16,22 @@ docker run -it --rm \
 getmeili/meilisearch:v0.27.1
 ```  
 
-## Python specific  
-Please install MeiliSearch from PIP : pip3 install meilisearch  
 
 ## Prepping the taxonomy file
 Since MeiliSearch only supports json files for now, we need to turn the taxonomy csv file into that format.  
-Be aware that Meilisearch requires an __ID field__ to be able to create the search index! 
+Be aware that Meilisearch requires an __ID field__ to be able to create the search index! If you wish to add a synthetic ID look here: https://stackoverflow.com/a/30530523
     
-```
-awk -F',' -v OFS=',' 'NR == 1 {print "ID", $0; next} {print (NR-1), $0}'  
-wpow_199k.csv  > output.csv
-```
 I used a Linux tool "JQ/csvtojson" to do the csv to json conversion :
 ```
 apt-get install npm jq  
-sudo apt-get install npm jq
+sudo apt-get install npm jq  
+```  
+Actual conversion step: 
+```
+csvtojson input.csv > output.json
 
 ```  
 
+
+## Python specific  
+Please install MeiliSearch from PIP : pip3 install meilisearch  
