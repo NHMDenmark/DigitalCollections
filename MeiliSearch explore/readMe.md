@@ -1,4 +1,6 @@
-# Test MeiliSearch solution to large a taxonomy in the App 'sputil'.
+# The Meilisearch approach has been abandoned due to inconsistent search results and the ascent of SQLite as the preferred quick search and retreival tool!
+
+# ~~Test MeiliSearch solution to large a taxonomy in the App 'sputil'.~~
 
 The purpose of this effort is to prototype a small search index solution to be used in conjunction with the SpUtil APP so that auto-suggest can be implemented. The auto-suggest feature requires very small latencies when users are typing in taxon names. Less than 20 milliseconds would be good.
 
