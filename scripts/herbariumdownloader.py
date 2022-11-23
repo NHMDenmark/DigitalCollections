@@ -20,6 +20,8 @@ args = parser.parse_args()
 # EXAMPLE:
 # python herbariumdownloader.py --input /Users/kimstp/Documents/NHMD/data/Herbarium/query_results_23032022.csv --samples 10 --df 0.5 --output /Users/kimstp/Dropbox/NHMD/Herbarium/Natalie
 
+# python herbariumdownloader.py --input /Users/kimstp/Documents/NHMD/data/Herbarium/query_results_23032022.csv --samples 100 --df 0.5 --output /Users/kimstp/Dropbox/NHMD/Herbarium/Natalie
+
 
 # TODO: Add check for validity of args.input string
 sheet=pd.read_csv(PurePath(args.input), low_memory=False) # Read CSV file
