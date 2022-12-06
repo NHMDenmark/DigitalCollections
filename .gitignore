@@ -131,3 +131,7 @@ dmypy.json
 
 .DS_Store
 
+DAGI_tools/files/archive/*.*
+DAGI_tools/files/*export*.*
+DAGI_tools/ve
+DAGI_tools/.vscode/launch.json
